@@ -7,6 +7,9 @@ $ ->
       element.fadeIn() if !visible
     else
       element.fadeOut()
-      
-  $('#move-page-top').click ->
-    $('html, body').animate({ scrollTop: 0 }, '1000')
+  $(document).on('click', '#move-page-top', ->
+    $('html, body').animate({ scrollTop: 0 }, '1000'))
+
+
+#  $('#move-page-top').click ->
+#    $('html, body').animate({ scrollTop: 0 }, '1000')
