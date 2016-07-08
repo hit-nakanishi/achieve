@@ -11,7 +11,7 @@
     <p>名前:<%= @contact.name %></p>
     <p>メールアドレス:<%= @contact.email %></p>
     <p>お問い合わせ内容:<%= @contact.content %></p>
-    <%= f.submit "登録する", class: 'btn btn-primary btn-block' %>
+    <%= f.submit "登録", class: 'btn btn-primary btn-block' %>
   <% end %>
 
   <%= form_for(@contact, url: new_contact_path, method: 'get') do |f| %>

@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $(window).scroll ->
+    element = $('#page-top-btn')
+    visible = element.is(':visible')
+    height = $(window).scrollTop()
+    if height > 400
+      element.fadeIn() if !visible
+    else
+      element.fadeOut()
+
+  # idがmove-page-topというdiv要素をクリックした時に動作する
+  $('#move-page-top').click ->
+    $('html, body').animate({ scrollTop: 0 }, '1000')

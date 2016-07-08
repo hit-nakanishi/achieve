@@ -12,12 +12,13 @@
 
         <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
 
-        <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+        <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
       </div>
     <% end %>
 
   </div>
 </div>
+
 <div id="page-top-btn" class="page-top-btn">
   <p><a class="move-page-top" id="move-page-top">▲</a></p>
 </div>
