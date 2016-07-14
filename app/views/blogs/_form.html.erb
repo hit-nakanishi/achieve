@@ -12,14 +12,12 @@
   </div>
 <% end %>
 
-<%= f.label :タイトル %>
-<%= f.text_field :title, class: 'form-control' %>
+<%= f.text_field :title, class: 'form-control', placeholder: "タイトル" %>
 <br>
 
-<%= f.label :内容 %>
-<%= f.text_field :content, class: 'form-control' %>
+<%= f.text_field :content, class: 'form-control', placeholder: "内　容" %>
 <br>
 
-<%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+<%= f.submit '内容確認', class: 'btn btn-primary btn-block' %>
 
 <% end %>

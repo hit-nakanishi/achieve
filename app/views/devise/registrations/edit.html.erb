@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+    <h2>編集 <%= resource_name.to_s.humanize %></h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %><br>
+      </div>
+  
+      <!-- 名前入力用のフィールドを追加 -->
+      <div class="field">
+        <%= f.text_field :name, class: "form-control", placeholder: "お名前" %><br>
+      </div>
+  
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :current_password %> <i>(変更する場合は現在のパスワード)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード" %><br>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %> <i>(変更しない場合は空欄)</i><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "新パスワード" %>
+        <% if @minimum_password_length %>
+          <em><%= @minimum_password_length %> 文字以上</em>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新パスワード（確認）" %><br>
+      </div>
+      <div class="actions">
+        <%= f.submit "更新", class: 'btn btn-default btn-sm btn-success' %>
+      </div>
+    <% end %>
+
+    <h3>アカウント削除</h3>
+
+    <p>Unhappy? <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか？" }, method: :delete, class: 'btn btn-default btn-sm btn btn-danger' %></p>
+
+    <%= link_to "戻る", :back %>
+
+  </div>
+</div>

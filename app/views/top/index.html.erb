@@ -1,6 +1,12 @@
-
   <section class="main-header">
-    <img src="<%= asset_path "achieve.png" %>"">
+    
+    <% if notice.present? %>
+      <p class="flash"><%= notice %></p>
+    <% elsif alert.present? %>
+      <p class="flash"><%= alert %></p>
+    <% end %>
+    
+    <img src="<%= asset_path "achieve.png" %>">
   </section>
 
   <section class="about">
@@ -12,7 +18,7 @@
     <p>
       Acheiveを一言で表すと、タスク管理アプリです。<br>
       チームメンバーが、今どのようなタスクを行っているかリアルタイムで把握することができます。
-   </p>
+    </p>
   </section>
   
   <section class="function container-fluid">
@@ -50,4 +56,3 @@
         <p><a class="move-page-top" id="move-page-top">▲</a></p>
     </div>
   </section>
-
