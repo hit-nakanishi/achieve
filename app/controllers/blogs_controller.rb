@@ -34,9 +34,8 @@ class BlogsController < ApplicationController
 
   def update
     set_user
-    
     if @blog.update(blogs_params)
-      redirect_to blogs_path, notice: "ブログを更新しました！"
+     redirect_to blogs_path, notice: "ブログを更新しました！"
     else
       render action: 'edit'
     end
@@ -48,8 +47,8 @@ class BlogsController < ApplicationController
   end
   
   def confirm
-    set_user
     @blog = Blog.new(blogs_params)
+    set_user
     render :new if @blog.invalid?
   end
 
