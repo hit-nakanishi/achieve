@@ -10,16 +10,20 @@ class BlogsController < ApplicationController
   def new
     if params[:back]
       @blog = Blog.new(blogs_params)
+      set_user
     else
       @blog = Blog.new
+      set_user
     end
   end
   
   def create
     @blog = Blog.new(blogs_params)
+    set_user
+
     if @blog.save
-    
       redirect_to blogs_path, notice: "ブログを作成しました！"
+      NoticeMailer.sendmail_blog(@blog).deliver
     else
       render action: 'new'
     end
@@ -29,6 +33,8 @@ class BlogsController < ApplicationController
   end
 
   def update
+    set_user
+    
     if @blog.update(blogs_params)
       redirect_to blogs_path, notice: "ブログを更新しました！"
     else
@@ -42,6 +48,7 @@ class BlogsController < ApplicationController
   end
   
   def confirm
+    set_user
     @blog = Blog.new(blogs_params)
     render :new if @blog.invalid?
   end
@@ -54,5 +61,10 @@ class BlogsController < ApplicationController
     # idをキーとして値を取得するメソッド
     def set_blog
       @blog = Blog.find(params[:id])
+    end
+
+    # user_idを代入する
+    def set_user
+      @blog.user_id = current_user.id
     end
 end

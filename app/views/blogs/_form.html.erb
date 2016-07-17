@@ -1,23 +1,23 @@
 <%= form_for(@blog, url: choose_new_or_edit) do |f| %>
 
-<% if @blog.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
 
-    <ul>
-    <% @blog.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+      <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= f.text_field :title, class: 'form-control', placeholder: "タイトル" %>
-<br>
+  <%= f.text_field :title, class: 'form-control', placeholder: "タイトル" %><br>
+  <%= f.text_field :content, class: 'form-control', placeholder: "内　容" %><br>
+  <%= f.hidden_field :user_id, :value => @blog.user_id %>
 
-<%= f.text_field :content, class: 'form-control', placeholder: "内　容" %>
-<br>
+  <p>【ユーザID :】<%= @blog.user_id %>【ユーザ名 :】<%= @blog.user.name %></p>
 
-<%= f.submit '内容確認', class: 'btn btn-primary btn-block' %>
+  <%= f.submit '内容確認', class: 'btn btn-primary btn-block' %>
 
 <% end %>
