@@ -1,6 +1,16 @@
 <%= form_for(@blog, url: choose_new_or_edit) do |f| %>
 
-  <%= f.error_messages! %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <%= f.text_field :title, class: 'form-control', placeholder: "タイトル" %><br>
   <%= f.text_field :content, class: 'form-control', placeholder: "内　容" %><br>

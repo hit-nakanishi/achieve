@@ -3,9 +3,19 @@
 
   <h1>お問い合わせ</h1>
 
-  <%= form_for(@contact, url: confirm_contacts_path) do |f| %>
+    <%= form_for(@contact, url: confirm_contacts_path) do |f| %>
 
-    <%= f.error_messages! %>
+      <% if @blog.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+
+          <ul>
+          <% @blog.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
     <%= f.text_field :name, class: 'form-control', placeholder: "お名前" %>
     <br>
