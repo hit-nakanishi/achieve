@@ -29,10 +29,12 @@
   email = "naka24naka24@gmail.com"
   name = "nakanishi"
   password = "password"
+  admin = true
   User.create!(email: email,
                name: name,
                password: password,
                password_confirmation: password,
+               admin: admin
                )
 
 end
