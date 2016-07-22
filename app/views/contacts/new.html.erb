@@ -5,12 +5,12 @@
 
     <%= form_for(@contact, url: confirm_contacts_path) do |f| %>
 
-      <% if @blog.errors.any? %>
+      <% if @contact.errors.any? %>
         <div id="error_explanation">
-          <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+          <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
 
           <ul>
-          <% @blog.errors.full_messages.each do |msg| %>
+          <% @contact.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
           </ul>
