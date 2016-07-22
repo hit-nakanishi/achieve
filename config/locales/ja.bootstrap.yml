@@ -1,0 +1,20 @@
+ja:
+  breadcrumbs:
+    application:
+      root: "Index"
+    pages:
+      pages: "ページ"
+  helpers:
+    actions: "Actions"
+    links:
+      back: "戻る"
+      cancel: "キャンセル"
+      confirm: "本当にいいですか?"
+      destroy: "削除"
+      new: "新規"
+      edit: "編集"
+    titles:
+      edit: "編集 %{model}"
+      save: "保存 %{model}"
+      new: "新規 %{model}"
+      delete: "削除 %{model}"
