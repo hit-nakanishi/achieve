@@ -6,7 +6,11 @@
   <%= f.text_field :content, class: 'form-control', placeholder: "内　容" %><br>
   <%= f.hidden_field :user_id, :value => @blog.user_id %>
 
+  <div class="prof-img">
+    <p><%= profile_img(@blog.user) if profile_img(@blog.user) %></p>
+  </div>
   <p>【ユーザID :】<%= @blog.user_id %>【ユーザ名 :】<%= @blog.user.name %></p>
+
 
   <%= f.submit '内容確認', class: 'btn btn-primary btn-block' %>
 

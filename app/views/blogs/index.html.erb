@@ -9,6 +9,9 @@
       <div class="row">
         <h4>タイトル:<strong><%= blog.title %></strong></h4>
         <p>本文:<%= blog.content %></p>
+        <div class="prof-img">
+          <p><%= profile_img(blog.user) if profile_img(blog.user) %></p>
+        </div>
         <p>【ユーザID :】<%= blog.user_id %>【ユーザ名 :】<%= blog.user.name %></p>
 
         <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>

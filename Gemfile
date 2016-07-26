@@ -58,6 +58,7 @@ group :development do
   gem 'letter_opener_web'
   gem 'letter_opener'
   gem 'mailcatcher'
+  gem 'dotenv-rails'
 end
 
 group :development, :test do
@@ -71,3 +72,10 @@ end
 gem 'rails_admin'
 
 gem 'cancan'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'carrierwave'
+
+gem 'rmagick'
