@@ -17,7 +17,7 @@
 
     <% end %>
 
-    <%= form_for(@blog, url: new_blog_path, method: 'get') do |f| %>
+    <%= form_for(@blog, url: blogs_blogs_path, method: 'post') do |f| %>
 
       <%= f.hidden_field :title %>
       <%= f.hidden_field :content %>

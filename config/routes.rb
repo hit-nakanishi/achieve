@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
+  resources :blogs do
+    resources :comments
+    
     collection do
       post :confirm
+      post 'blogs' => 'blogs#new', :path => '/new'
     end
   end
 
@@ -12,8 +15,6 @@ Rails.application.routes.draw do
     end
   end
   
-#  devise_for :users
-
   root 'top#index'
 
   if Rails.env.development?

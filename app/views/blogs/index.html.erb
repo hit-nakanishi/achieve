@@ -7,7 +7,12 @@
 
     <% @blogs.each do |blog| %>
       <div class="row">
-        <h4>タイトル:<strong><%= blog.title %></strong></h4>
+        
+        <%= link_to blog_path(blog), method: 'get' do %>
+
+          <h4>タイトル:<strong><%= blog.title %></strong></h4>
+        <% end %>
+        
         <p>本文:<%= blog.content %></p>
         <div class="prof-img">
           <p><%= profile_img(blog.user) if profile_img(blog.user) %></p>

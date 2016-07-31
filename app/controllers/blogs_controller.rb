@@ -1,11 +1,10 @@
 class BlogsController < ApplicationController
   # ブログ画面にログインするためにauthenticate_user!を追加する。
   before_action :authenticate_user!
-  before_action :set_blog, only: [:edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
     @blogs = Blog.all.order(id: :desc)
-
   end
 
   def new
@@ -51,6 +50,13 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blogs_params)
     set_user
     render :new if @blog.invalid?
+  end
+
+  # showアククションを定義します。入力フォームと一覧を表示するためインスタンスを２つ生成します。
+  def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
+
   end
 
   private
