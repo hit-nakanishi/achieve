@@ -38,7 +38,7 @@
       
       <div class="field">
         <%= profile_img(@user) if profile_img(@user) %>
-        <%= f.file_field :avatar %>
+        <%= f.file_field :avatar, class: 'btn btn-default btn-sm btn-default' %>
         <%= f.hidden_field :avatar_cache %>
       </div>      
       

@@ -1,57 +1,64 @@
-<h2>ユーザー(詳細情報)</h2>
-<div class="child row">
-  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
-    <div>
-      <div class="prof-img-detail">
-        <%= profile_img(@user) %>
-      </div>
-      <p><strong>【名前】：</strong></p>
-      <p>
-      <% if @user.name.blank? %>
-        <p><%= "未登録" %></p><br>
-      <% else %>
-        <p><%= @user.name %></p><br>
-      <% end %>
+<section class="function-user-detail container">
+  <div class="row">
 
-      <p><strong>【メールアドレス】：</strong></p>
-      <p><%= @user.email %></p>
+    <div class="col-md-3 col-sm-6">
+      <h3>ユーザー(詳細情報)</h3>
+      <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+        <div>
+          <div class="prof-img-detail">
+            <%= profile_img(@user) %>
+          </div>
+          <p>名　前</p>
+          <p>
+          <% if @user.name.blank? %>
+            <p><%= "未登録" %></p><br>
+          <% else %>
+            <p><%= @user.name %></p><br>
+          <% end %>
+
+          <p>メールアドレス</p>
+          <p><%= @user.email %></p>
+        </div>
+      </div>
     </div>
-</div>
 
-<div class="row">
-  <div class="col-md-6">
-  <h3><strong>フォローユーザー</strong></h3>
-  <% @user.followed_users.each do |followed|%>
-    <% unless @user.id ==  followed.id %>
-      <div class="prof-img">
-        <%= link_to profile_img(followed), user_path(followed.id) %>
-      </div>
-      
-      <% if followed.name.blank? %>
-        <p><%= link_to "未登録", user_path(followed.id) %>
-      <% else %>
-        <p><%= link_to followed.name, user_path(followed.id) %>
-      <% end %>
-      
-      <p><%= link_to followed.email, user_path(followed.id) %></p>
-    <% end %>
-  <% end %>
+    <div class="col-md-3 col-sm-6">
 
-  <h3><strong>フォロワー</strong></h3>
-  <% @user.followers.each do |followers|%>
-    <% unless @user.id == followers.id %>
-      <div class="prof-img">
-        <%= link_to profile_img(followers), user_path(followers.id) %>
-      </div>
+      <h3><strong>フォローユーザー</strong></h3>
+      <% @user.followed_users.each do |followed|%>
+        <% unless @user.id ==  followed.id %>
+          <div class="prof-img">
+            <%= link_to profile_img(followed), user_path(followed.id) %>
+          </div>
       
-      <% if followers.name.blank? %>
-        <p><%= link_to "未登録", user_path(followers.id) %>
-      <% else %>
-        <p><%= link_to followers.name, user_path(followers.id) %></p>
+          <% if followed.name.blank? %>
+            <p><%= link_to "未登録", user_path(followed.id) %>
+          <% else %>
+            <p><%= link_to followed.name, user_path(followed.id) %>
+          <% end %>
+      
+          <p><%= link_to followed.email, user_path(followed.id) %></p>
+        <% end %>
       <% end %>
+    </div>
+    
+    <div class="col-md-3 col-sm-6">
+      <h3><strong>フォロワー</strong></h3>
+      <% @user.followers.each do |followers|%>
+        <% unless @user.id == followers.id %>
+          <div class="prof-img">
+            <%= link_to profile_img(followers), user_path(followers.id) %>
+          </div>
+      
+          <% if followers.name.blank? %>
+            <p><%= link_to "未登録", user_path(followers.id) %>
+          <% else %>
+            <p><%= link_to followers.name, user_path(followers.id) %></p>
+          <% end %>
   
-      <p><%= link_to followers.email, user_path(followers.id) %></p>
-    <% end %>
-  <% end %>
+          <p><%= link_to followers.email, user_path(followers.id) %></p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+</section>

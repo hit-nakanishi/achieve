@@ -17,7 +17,14 @@
         <div class="prof-img">
           <p><%= profile_img(blog.user) if profile_img(blog.user) %></p>
         </div>
-        <p>【ユーザID :】<%= blog.user_id %>【ユーザ名 :】<%= blog.user.name %></p>
+        <p>【ユーザID :】<%= blog.user_id %>【ユーザ名 :】
+        <% if blog.user.name.blank? %>
+          <%= "未登録" %><br>
+        <% else %>
+          <%= blog.user.name %><br>
+        <% end %>
+
+        </p>
 
         <% if current_user.id == blog.user_id %>
           <%= link_to "", edit_blog_path(blog.id), class: 'fa fa-pencil-square-o fa-lg' %>
