@@ -4,11 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 
+  mount_uploader :avatar, AvatarUploader
+  
   has_many :blogs, dependent: :destroy
   # CommentモデルのAssociationを設定
   has_many :comments, dependent: :destroy
-  
-  mount_uploader :avatar, AvatarUploader
+
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships, source: :follower
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
@@ -50,5 +56,20 @@ class User < ActiveRecord::Base
 
   def self.create_unique_string
     SecureRandom.uuid
+  end
+  
+  #指定のユーザをフォローする
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  #フォローしているかどうかを確認する
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  #指定のユーザのフォローを解除する
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
   end
 end

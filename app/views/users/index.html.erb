@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>ユーザー一覧</h2>
+  <% @users.each do |user| %>
+      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+        <div class="prof-img">
+          <%= link_to profile_img(user), user_path(user.id) %>
+        </div>
+
+        <% if user.name.blank? %>
+          <%= link_to "名前：未登録", user_path(user.id) %><br>
+        <% else %>
+          <%= link_to user.name, user_path(user.id) %><br>
+        <% end %>
+          <%= link_to user.email, user_path(user.id) %>
+
+        <% unless current_user.id == user.id %>
+          <%= render 'users/mypages/follow_form', user: user %>
+        <% end %>
+      </div>
+  <% end %>
+</div>

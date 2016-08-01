@@ -19,8 +19,10 @@
         </div>
         <p>【ユーザID :】<%= blog.user_id %>【ユーザ名 :】<%= blog.user.name %></p>
 
-        <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
-        <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+        <% if current_user.id == blog.user_id %>
+          <%= link_to "", edit_blog_path(blog.id), class: 'fa fa-pencil-square-o fa-lg' %>
+          <%= link_to "", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？'}, class: 'fa fa-trash-o fa-lg' %>
+        <% end%>
       </div>
     <% end %>
 
