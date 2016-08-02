@@ -28,7 +28,7 @@
 
         <% if current_user.id == blog.user_id %>
           <%= link_to "", edit_blog_path(blog.id), class: 'fa fa-pencil-square-o fa-lg' %>
-          <%= link_to "", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？'}, class: 'fa fa-trash-o fa-lg' %>
+          <%= link_to "", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除して宜しいですか？'}, class: 'fa fa-trash-o fa-lg' %>
         <% end%>
       </div>
     <% end %>

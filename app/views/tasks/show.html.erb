@@ -1,0 +1,37 @@
+<p>
+  <strong>ユーザー：</strong>
+  <%= @task.user.name %>
+</p>
+
+<p>
+  <strong>タイトル：</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>内　　容：</strong>
+  <%= simple_format @task.content %>
+</p>
+
+<p>
+  <strong>期　　限：</strong>
+  <%= @task.deadline %>
+</p>
+
+<p>
+  <strong>担　　当：</strong>
+  <%= @task.charge_id %>
+</p>
+
+<p>
+  <strong>完　　了：</strong>
+  <%= if @task.done? then "完了" else "未完了" end %>
+</p>
+
+<p>
+  <strong>進捗状況：</strong>
+  <%= @task.status == 1? "対応中" : "未着手" %>
+</p>
+
+<%= link_to '編集', edit_user_task_path(@task.user, @task) %> |
+<%= link_to '戻る', user_tasks_path(@task.user) %>
