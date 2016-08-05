@@ -1,0 +1,48 @@
+
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+<p>
+  <strong>依 頼 者：</strong>
+  <%= @submit_request.user.name %>
+</p>
+
+<p>
+  <strong>タイトル：</strong>
+  <%= @submit_request.task.title %>
+</p>
+
+<p>
+  <strong>担 当 者：</strong>
+  <%= @submit_request.charger.name %>
+</p>
+
+<p>
+  <strong>依 頼 日：</strong>
+  <%= @submit_request.created_at.strftime("%y/%m/%d") %><%= " " %><%= @submit_request.created_at.strftime("%H:%M") %>
+</p>
+
+<p>
+  <strong>期 限 日：</strong>
+  <%= @submit_request.task.deadline.strftime("%y/%m/%d") %><%= " " %><%= @submit_request.task.deadline.strftime("%H:%M") %>
+</p>
+
+<p>
+  <strong>メッセージ：</strong>
+  <%= @submit_request.message %>
+</p>
+
+<p>
+  <strong>ステータス：</strong>
+  <%= status_display_name(@submit_request.status) %>
+</p>
+
+<p>
+  <strong>状　　況：</strong>
+  <%= done_display_name(@submit_request.task.done) %>
+</p>
+
+<%= link_to '戻る', :back %>
+
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <div>
+      <%= link_to '新規依頼', new_user_submit_request_path, class: 'btn btn-default btn-xs' %> |
+      <%= link_to '依頼されている一覧', inbox_user_submit_requests_path, class: 'btn btn-default btn-xs' %>
+      
+      <div id="submit_requests_<%= current_user.id %>">
+        <%= render 'submit_requests_list', submit_requests: @submit_requests %>
+      </div>
+    </div>
+  </div>
+</div>
