@@ -11,7 +11,6 @@
         <% else %>
           <%= link_to user.name, user_path(user.id) %><br>
         <% end %>
-          <%= link_to user.email, user_path(user.id) %>
 
         <% unless current_user.id == user.id %>
           <%= render 'users/mypages/follow_form', user: user %>
