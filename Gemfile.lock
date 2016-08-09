@@ -90,6 +90,7 @@ GEM
     haml (4.0.7)
       tilt
     hashie (3.4.4)
+    httpclient (2.8.0)
     i18n (0.7.0)
     jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -190,6 +191,11 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    pusher (1.1.0)
+      httpclient (~> 2.7)
+      multi_json (~> 1.0)
+      pusher-signature (~> 0.1.8)
+    pusher-signature (0.1.8)
     rack (1.6.4)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
@@ -320,6 +326,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
@@ -334,6 +341,7 @@ DEPENDENCIES
   pry-doc
   pry-rails
   pry-stack_explorer
+  pusher
   rails (= 4.2.3)
   rails_12factor
   rails_admin

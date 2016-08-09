@@ -13,6 +13,7 @@
         <% end %>
 
         <% unless current_user.id == user.id %>
+          <%= render 'users/mypages/user', user: user %>
           <%= render 'users/mypages/follow_form', user: user %>
         <% end %>
       </div>

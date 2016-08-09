@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>お知らせ</h2>
+  <hr>
+  <% @notifications.each do |notification| %>
+      
+    <ul class="notification-list">
+      <% if notification.comment_id? %>
+        <li>
+          <span class="label label-pill label-default"><%= display_read_status(notification.read) %></span>
+          <p>
+            <%= receive_user(notification) %>さんが
+            <small class="dropdown">ブログ「<%= notification.comment.blog.title %>」にコメントしました。</small>
+          </p>
+          <p class="palette-paragraph text-right">
+            <small class="dropdown">
+              <i class="fa fa-clock-o"></i>&ensp;<%= posted_time(notification.created_at) %>
+            </small>
+          </p>
+        </li>
+      <% else %>
+        <li>
+          <span class="label label-pill label-default"><%= display_read_status(notification.read) %></span>
+          <p>
+            <%= receive_user(notification) %>さんから
+            <small class="dropdown">メッセージが届いています。</small>
+          </p>
+          <p class="palette-paragraph text-right">
+            <small class="dropdown">
+              <i class="fa fa-clock-o"></i>&ensp;<%= posted_time(notification.created_at) %>
+            </small>
+          </p>
+        </li>
+      <% end %>
+
+      <hr>
+    </ul>
+      
+  <% end %>
+</div>
