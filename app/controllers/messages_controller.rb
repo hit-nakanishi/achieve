@@ -32,12 +32,16 @@ class MessagesController < ApplicationController
   def create
     @message = @conversation.messages.new(message_params)
 
+    if @conversation.recipient_id == current_user.id
+      @notification = @message.notifications.build(recipient_id: @conversation.sender_id, sender_id: current_user.id, conversation_id: @conversation.id)
+    else
+      @notification = @message.notifications.build(recipient_id: @conversation.recipient_id, sender_id: current_user.id, conversation_id: @conversation.id)
+    end
+
     if @message.save
       if @conversation.recipient_id == current_user.id
-        @notification = @message.notifications.build(recipient_id: @conversation.sender_id, sender_id: current_user.id, conversation_id: @conversation.id)
         Pusher.trigger(['notifications'+@message.conversation.sender_id.to_s],'message', {messaging: "メッセージが届いています。：#{@message.body}"})
       else
-        @notification = @message.notifications.build(recipient_id: @conversation.recipient_id, sender_id: current_user.id, conversation_id: @conversation.id)
         Pusher.trigger(['notifications'+@message.conversation.recipient_id.to_s],'message', {messaging: "メッセージが届いています。：#{@message.body}"})
       end
 

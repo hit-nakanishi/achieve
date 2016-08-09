@@ -22,7 +22,7 @@
           <span class="label label-pill label-default"><%= display_read_status(notification.read) %></span>
           <p>
             <%= receive_user(notification) %>さんから
-            <small class="dropdown">メッセージが届いています。</small>
+            <small class="dropdown">メッセージが届いています。:<%= notification.message.body %></small>
           </p>
           <p class="palette-paragraph text-right">
             <small class="dropdown">
