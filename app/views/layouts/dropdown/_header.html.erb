@@ -22,7 +22,7 @@
               // Enable pusher logging - don't include this in production
               Pusher.logToConsole = true;
 
-              var pusher = new Pusher('<%= Pusher.key %>', {encrypted: true});
+              var pusher = new Pusher('89ce88afc70f1c5ba79e');
               
               var channel = pusher.subscribe('notifications' + <%= current_user.id.to_s %>);
               channel.bind('message', function(data) {
