@@ -11,8 +11,8 @@ class CommentsController < ApplicationController
     @notification = @comment.notifications.build(recipient_id: @blog.user_id, sender_id: current_user.id)
 
     # クライアント要求に応じてフォーマットを変更
-    respond_to do |format|
-      if @comment.save
+    if @comment.save
+      respond_to do |format|
         format.js { render :index }
       end
     end
