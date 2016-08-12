@@ -83,3 +83,5 @@ gem 'rmagick'
 gem 'pusher'
 
 gem "font-awesome-rails"
+
+gem 'fog'
