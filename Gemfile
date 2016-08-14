@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -58,7 +58,6 @@ group :development do
   gem 'letter_opener_web'
   gem 'letter_opener'
   gem 'mailcatcher'
-  gem 'dotenv-rails'
 end
 
 group :development, :test do
@@ -85,3 +84,13 @@ gem 'pusher'
 gem "font-awesome-rails"
 
 gem 'fog'
+
+gem 'dotenv-rails'
+
+group :development, :test do
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+end
